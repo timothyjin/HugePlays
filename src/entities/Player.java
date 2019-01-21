@@ -182,7 +182,7 @@ public class Player extends MovingRectangle implements KeyListener {
             g.setColor(color);
         }
         if (!isClipEmpty()) {
-            g.drawString(new Integer(getBullets()).toString(), getRectX() + 2, getRectY() + height - 1);    // draw bullets left
+            g.drawString(Integer.toString(getBullets()), getRectX() + 2, getRectY() + height - 1);    // draw bullets left
         }
 
         /* draw respawn line---------------------------------------------------------------------*/
@@ -488,11 +488,6 @@ public class Player extends MovingRectangle implements KeyListener {
     }
 
     /**
-     * @param i - the invincibility block that is currently in the environment
-     */
-//	public void updateInvBlock(Invincibility i) { invBlock = i; }
-
-    /**
      * Places the player in their assigned spawn location, or in a random location, after he dies.
      */
     public void respawn() {
@@ -575,14 +570,14 @@ public class Player extends MovingRectangle implements KeyListener {
 
 //--KeyListener variables and methods	
 
-    protected HashSet<Integer> pressed = new HashSet<Integer>();
+    protected HashSet<Integer> pressed = new HashSet<>();
 
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
         for (int i : controls) {
             if (key == i) {
-                pressed.add(new Integer(key));
+                pressed.add(key);
             }
         }
     }
@@ -592,7 +587,7 @@ public class Player extends MovingRectangle implements KeyListener {
         int key = e.getKeyCode();
         for (int i : controls) {
             if (key == i) {
-                pressed.remove(new Integer(key));
+                pressed.remove(key);
             }
         }
     }

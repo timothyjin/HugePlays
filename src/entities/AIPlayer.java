@@ -44,30 +44,30 @@ public class AIPlayer extends Player {
                 shoot();
             }
             if (getX() < invBlock.getX()) {
-                pressed.add(new Integer(3));
+                pressed.add(3);
             }
             if (getX() > invBlock.getX()) {
-                pressed.add(new Integer(2));
+                pressed.add(2);
             }
             if (getY() < invBlock.getY()) {
-                pressed.add(new Integer(1));
+                pressed.add(1);
             }
             if (getY() > invBlock.getY()) {
-                pressed.add(new Integer(0));
+                pressed.add(0);
             }
         } else if (isClipEmpty()) {    // move towards reloader if clip is empty
             pressed.clear();
             if (getX() < reloader.getX()) {
-                pressed.add(new Integer(3));
+                pressed.add(3);
             }
             if (getX() > reloader.getX()) {
-                pressed.add(new Integer(2));
+                pressed.add(2);
             }
             if (getY() < reloader.getY()) {
-                pressed.add(new Integer(1));
+                pressed.add(1);
             }
             if (getY() > reloader.getY()) {
-                pressed.add(new Integer(0));
+                pressed.add(0);
             }
         } else {    // normal movement
             ticks++;
@@ -75,7 +75,7 @@ public class AIPlayer extends Player {
                 pressed.clear();
                 horizMove();
             }
-            pressed.remove(new Integer(4));
+            pressed.remove(4);
             if (ticks % shootTickLimit == 0) {
                 shoot();
             }
@@ -90,7 +90,7 @@ public class AIPlayer extends Player {
 
         shooting = false;
         canShoot = true;
-        pressed.add(new Integer(4));
+        pressed.add(4);
     }
 
     /*
@@ -101,9 +101,9 @@ public class AIPlayer extends Player {
 
         double d = Math.random();
         if (d < 0.33) {
-            pressed.add(new Integer(0));
+            pressed.add(0);
         } else if (d < 0.66) {
-            pressed.add(new Integer(1));
+            pressed.add(1);
         }
     }
 
@@ -129,29 +129,29 @@ public class AIPlayer extends Player {
             int xDiff = getX() - p.getX();
             int yDiff = getY() - p.getY();
             if (xDiff < 0 && xDiff > -200 && yDiff < 0 && yDiff > -200) {
-                pressed.add(new Integer(3));
-                pressed.add(new Integer(1));
+                pressed.add(3);
+                pressed.add(1);
                 shootTickLimit = FAST_STL;
             } else if (xDiff > 0 && xDiff < 200 && yDiff < 0 && yDiff > -200) {
-                pressed.add(new Integer(2));
-                pressed.add(new Integer(1));
+                pressed.add(2);
+                pressed.add(1);
                 shootTickLimit = FAST_STL;
             } else if (xDiff < 0 && xDiff > -200 && yDiff > 0 && yDiff < 200) {
-                pressed.add(new Integer(3));
-                pressed.add(new Integer(0));
+                pressed.add(3);
+                pressed.add(0);
                 shootTickLimit = FAST_STL;
             } else if (xDiff > 0 && xDiff < 200 && yDiff > 0 && yDiff < 200) {
-                pressed.add(new Integer(2));
-                pressed.add(new Integer(0));
+                pressed.add(2);
+                pressed.add(0);
                 shootTickLimit = FAST_STL;
             } else {
                 shootTickLimit = DEFAULT_STL;
                 double d = 2 * Math.random() * getX(); // [0, 2400)
                 if (d < 600) {    // use 600 for equal left and right moves, <600 for more use of the whole screen
-                    pressed.add(new Integer(3));
+                    pressed.add(3);
 //					right++;
                 } else {
-                    pressed.add(new Integer(2));
+                    pressed.add(2);
 //					left++;
                 }
             }
