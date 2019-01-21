@@ -6,34 +6,34 @@ import state.*;
 
 public class ToggleButtonListener implements MouseListener {
 
-	private ToggleButton button;
-	private SettingsScreen screen;
-	
-	public ToggleButtonListener(ToggleButton b, SettingsScreen s) {
-		
-		button = b;
-		screen = s;
-	}
-	
-	public void mousePressed(MouseEvent e) {
-		
-		button.toggleButton();
-		
-		Togglable action = screen.getSettingsMap().get(button);
-		action.toggleSetting();
-	}
+    private ToggleButton button;
+    private SettingsScreen screen;
 
-	public void mouseEntered(MouseEvent e) {
+    public ToggleButtonListener(ToggleButton b, SettingsScreen s) {
 
-		button.highlightButton();
-	}
+        button = b;
+        screen = s;
+    }
 
-	public void mouseExited(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
 
-		button.darkenButton();
-	}
-	
-	public void mouseClicked(MouseEvent e) { }
-	
-	public void mouseReleased(MouseEvent e) { }
+        button.toggleButton();
+
+        Togglable action = screen.getSettingsMap().get(button);
+        action.toggleSetting();
+    }
+
+    public void mouseEntered(MouseEvent e) {
+
+        button.highlightButton();
+    }
+
+    public void mouseExited(MouseEvent e) {
+
+        button.darkenButton();
+    }
+
+    public void mouseClicked(MouseEvent e) { }
+
+    public void mouseReleased(MouseEvent e) { }
 }
